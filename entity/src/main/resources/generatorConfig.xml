@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!--数据库驱动-->
-    <!--<classPathEntry    location="mysql-connector-java-5.0.8-bin.jar"/>-->
     <context id="DB2Tables" targetRuntime="MyBatis3">
 
         <!--自定义插件 -->
