@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weina.myproject.mapper.MUserMapper">
+  <resultMap id="BaseResultMap" type="com.weina.myproject.entity.MUser">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="oppo" jdbcType="VARCHAR" property="oppo" />
+    <result column="vivo" jdbcType="VARCHAR" property="vivo" />
+    <result column="huawei" jdbcType="VARCHAR" property="huawei" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="com.weina.myproject.entity.MUser">
+    insert into m_user (id, oppo, vivo, 
+      huawei, create_time, update_time, 
+      is_delete)
+    values (#{id,jdbcType=BIGINT}, #{oppo,jdbcType=VARCHAR}, #{vivo,jdbcType=VARCHAR}, 
+      #{huawei,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.weina.myproject.entity.MUser">
+    insert into m_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="oppo != null">
+        oppo,
+      </if>
+      <if test="vivo != null">
+        vivo,
+      </if>
+      <if test="huawei != null">
+        huawei,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="oppo != null">
+        #{oppo,jdbcType=VARCHAR},
+      </if>
+      <if test="vivo != null">
+        #{vivo,jdbcType=VARCHAR},
+      </if>
+      <if test="huawei != null">
+        #{huawei,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>
