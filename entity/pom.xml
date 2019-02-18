@@ -9,27 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <description>这个模块用于存放所有数据库映射实体类对象</description>
-
     <artifactId>entity</artifactId>
-
     <dependencies>
-
-
         <dependency>
             <groupId>com.weina</groupId>
             <artifactId>util</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>com.weina</groupId>
             <artifactId>core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-
-
-
     </dependencies>
     <build>
         <plugins>
@@ -46,7 +37,6 @@
                         <configuration>
                             <verbose>true</verbose>
                             <overwrite>true</overwrite>
-
                         </configuration>
                     </execution>
                 </executions>
@@ -65,14 +55,6 @@
                         <groupId>org.mybatis</groupId>
                         <artifactId>mybatis</artifactId>
                         <version>3.4.5</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.weina</groupId>
-                        <artifactId>entity</artifactId>
-                        <version>0.0.1-SNAPSHOT</version>
-                        <scope>system</scope>
-                        <!--<systemPath>E:/Workspaces/IdeaProjects/myproject/out/artifacts/entity_jar/entity.jar</systemPath>-->
-                        <systemPath>${basedir}/lib/entity.jar</systemPath>
                     </dependency>
                 </dependencies>
             </plugin>

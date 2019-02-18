@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!--数据库驱动-->
-    <context id="DB2Tables" targetRuntime="MyBatis3">
+    <context id="myGen" targetRuntime="MyBatis3">
 
         <!--自定义插件 -->
         <plugin type="com.weina.codegenerator.LombokPlugin">
@@ -47,8 +47,8 @@
                enableDeleteByExample="false"
                enableSelectByExample="false"
                selectByExampleQueryId="false"></table>-->
-        <table tableName="m_user"
-               domainObjectName="MUser"
+        <table tableName="m_item"
+               domainObjectName="MItem"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"

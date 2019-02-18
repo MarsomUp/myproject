@@ -55,8 +55,6 @@ public class LombokPlugin extends PluginAdapter {
         return true;
     }
 
-
-
     @Override
     public boolean clientGenerated(Interface interfaze, TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         return super.clientGenerated(interfaze, topLevelClass, introspectedTable);
