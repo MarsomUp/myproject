@@ -34,11 +34,11 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         super.configureMessageConverters(converters);
-        converters.add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
+        //converters.add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
     }
 
     @Override
     protected void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-        configurer.favorPathExtension(false);
+        super.configureContentNegotiation(configurer);
     }
 }

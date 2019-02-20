@@ -1,11 +1,18 @@
 package com.weina.myproject.controller;
 
 import com.weina.exception.BusinessException;
+import com.weina.mq.MqTag;
+import com.weina.mq.MqTopic;
 import com.weina.myproject.entity.MUser;
 import com.weina.myproject.service.TestService;
 import com.weina.redis.Redis;
 import com.weina.redis.RedisKit;
 import com.weina.web.ResultCodeEnum;
+import org.apache.rocketmq.client.exception.MQBrokerException;
+import org.apache.rocketmq.client.exception.MQClientException;
+import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +28,8 @@ public class TestController {
 
     @Autowired
     private TestService testService;
+    @Autowired
+    private DefaultMQProducer producer;
 
     @GetMapping("hello")
     public String hello() {
@@ -50,5 +59,26 @@ public class TestController {
         RedisKit.use().setex("myc", 5*60, "怎么老是乱码！");
         String s = RedisKit.use().get("myc");
         return s;
+    }
+
+    @GetMapping("mq")
+    public String mq() {
+        System.out.println("发送消息开始！");
+        Message message = new Message(MqTopic.TOPIC_MSG, MqTag.normal.type, "Hello World".getBytes());
+        Message message1 = new Message(MqTopic.TOPIC_ORDER, MqTag.system.type, "开始有一个订单".getBytes());
+        System.out.println("发送消息结果："+message.toString());
+        try {
+            producer.send(message);
+            producer.send(message1);
+        } catch (MQClientException e) {
+            e.printStackTrace();
+        } catch (RemotingException e) {
+            e.printStackTrace();
+        } catch (MQBrokerException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "OK";
     }
 }
